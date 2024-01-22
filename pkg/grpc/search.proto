@@ -1,0 +1,24 @@
+syntax = "proto3";
+option go_package="searchproto/searchproto";
+package broker;
+
+message SearchRequest {
+    string query = 1;
+    string country = 2;
+    string lang = 3;
+}
+
+message SearchResponse {
+  string error = 1;
+  repeated SearchItem items = 2;
+}
+
+message SearchItem {
+  string title = 1;
+  string snippet = 2;
+  string url = 3;
+}
+
+service Search {
+    rpc ExecuteSearch(SearchRequest) returns (SearchResponse) {}
+}

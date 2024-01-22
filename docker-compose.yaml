@@ -1,0 +1,16 @@
+version: '3.9'
+
+services:
+  google-search-service:
+    container_name: google-search-service
+    build: .
+    ports:
+      - 5443:5443
+    env_file:
+      - .env
+    networks:
+      - google-search
+
+networks:
+  google-search:
+    external: true
